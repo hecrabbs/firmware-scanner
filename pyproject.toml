@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "firmware-scanner"
+version = "1.0.0"
+requires-python = ">= 3.12"
+dependencies = []
+
+[project.scripts]
+firmware-scanner = "firmware_scanner.__main__:main"
