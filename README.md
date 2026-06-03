@@ -9,9 +9,15 @@ sudo docker build -t binwalkv3 .
 conda create -f environment.yml -y
 conda activate firmware-scanner
 
-# If developing install firmware_scanner as editable
-pip install -e .
+# Install firmware_scanner
+pip install --no-deps .
+
+# If developing install it as editable
+pip install --no-deps -e .
+
+# Set API key environment variable
+export GEMINI_API_KEY=<YOUR_API_KEY_HERE>
 
 # Scanner help
-firmware_scanner -h
+firmware-scanner -h
 ```

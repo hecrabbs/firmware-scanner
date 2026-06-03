@@ -6,6 +6,9 @@ from pathlib import Path
 def extract_firmware(input_file: str | os.PathLike,
                      output_dir: str | os.PathLike):
     """Extracts firmware using binwalk."""
+
+    print(f"\n[*] Running firmware extraction...")
+
     input_file = Path(input_file).resolve()
     output_dir = Path(output_dir).resolve()
 
@@ -20,7 +23,7 @@ def extract_firmware(input_file: str | os.PathLike,
 
     print(f"[*] Target Firmware: {input_file.name}")
     print(f"[*] Output Directory: {output_dir}")
-    print(f"[*] Running binwalk...")
+    print("[*] Running binwalk...")
 
     docker_cmd = [
         "docker", "run", "--rm",
@@ -43,7 +46,8 @@ def extract_firmware(input_file: str | os.PathLike,
             stderr=subprocess.STDOUT,
             text=True
         )
-        print("\n[+] Extraction Complete!")
+        print("[*] Extraction Complete:")
+        print(result.stdout)
     except subprocess.CalledProcessError as e:
         print("\n[-] Error occurred during Binwalk extraction:")
         print("[-]", e.stdout)
@@ -52,4 +56,4 @@ def extract_firmware(input_file: str | os.PathLike,
         raise RuntimeError(
             "'docker'. Make sure docker is installed and running")
 
-    return result
+    print(result)

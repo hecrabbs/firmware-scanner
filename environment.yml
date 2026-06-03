@@ -4,5 +4,7 @@ channels:
 dependencies:
   - python=3.12.13
   - pip=26.1.2
-  - pip:
-    - .
+  - tree=2.3.2
+  - grep=3.12
+  - google-genai=2.7.0
+  - pydantic=2.13.4
